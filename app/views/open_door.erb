@@ -1,0 +1,12 @@
+<% available_doors = [1,2,3].reject{|door| door == @chosen_door || door == @gold } %>
+<% donkey = available_doors.sample %>
+
+<img src='door-<%= donkey == 1 ? "donkey" : 1 %>.png'><img src='door-<%= donkey == 2 ? "donkey" : 2%>.png'><img src='door-<%= donkey == 3 ? "donkey" : 3%>.png'>
+
+<br>You chose door <%= @chosen_door%><br><br>
+Now we will show you one goat.
+<br>
+<br>
+Would you like to switch with door <%= new_door = [1,2,3].reject {|door| door == donkey || door == @chosen_door}.first %>?
+<a href="/switch/<%=new_door%>/<%= @gold%>">Yes</a> <a href="/keep/<%=@chosen_door%>/<%=@gold%>">No</a>
+
